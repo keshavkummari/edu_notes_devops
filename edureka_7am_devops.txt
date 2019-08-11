@@ -1,0 +1,28 @@
+
+
+DevOps Engineer
+
+
+STEP-1 : Operating Systems : (Administration(System & Network))
+    1. Unix
+    2. MacOS
+    3. Windows (Desktop/Laptop:Windows & Servers(Windows))
+    4. Linux
+
+Types of Tasks/Way of Doing: 
+
+To Create a file ? GUI / CUI / Scripting
+
+STEP-2 : Cloud(AWS & AZURE) 
+
+Administration(System & Network) : GUI / CUI / Scripting(Bash|Powershell|Python)
+
+STEP-3 : Programming :
+
+- java or Python
+
+STEP-4 : DevOps CI/CD Pipeline Tools : Git, Github, Maven, Jenkins, Jfrog, Docker, Kubernetes, Ansible, Nagios
+
+Full Stack Engineers : Developer, QA, Deploy, Monitor 
+
+

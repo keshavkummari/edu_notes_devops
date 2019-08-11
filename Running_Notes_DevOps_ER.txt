@@ -1,0 +1,360 @@
+(base) Keshavs-MacBook-Pro:Downloads keshavkummari$ ssh -i "edureka_aws.pem" ubuntu@ec2-174-129-129-242.compute-1.amazonaws.com
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1044-aws x86_64)
+
+ubuntu@dev:~$ sudo su
+root@dev:/home/ubuntu# cd
+
+root@dev:~# uname -a
+Linux dev.kk.com 4.15.0-1044-aws #46-Ubuntu SMP Thu Jul 4 13:38:28 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+
+root@dev:~# cat /etc/issue
+Ubuntu 18.04.2 LTS \n \l
+
+root@dev:~# apt update
+
+root@dev:~# apt list --upgradable
+
+root@dev:~# apt install maven
+
+root@dev:~# cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+root@dev:~# cp -pv /etc/environment /etc/environment_20190811_V2.0
+'/etc/environment' -> '/etc/environment_20190811_V2.0'
+
+# Java & JRE Home Path
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+JRE_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre/"
+
+ls -lrt /usr/share/maven/
+
+vim /etc/environment
+
+# Maven Environment Variable Configuration
+MAVEN_HOME="/usr/share/maven/"
+M2=$MAVEN_HOME/bin
+
+
+ubuntu@dev:~$ sudo su
+root@dev:/home/ubuntu# cd
+root@dev:~# 
+root@dev:~# vim /etc/environment
+root@dev:~# 
+root@dev:~# cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Java & JRE Home Path
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+JRE_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre/"
+
+# Maven Environment Variable Configuration
+MAVEN_HOME="/usr/share/maven/"
+M2=$MAVEN_HOME/bin
+root@dev:~# 
+root@dev:~# 
+root@dev:~# echo $MAVEN_HOME
+
+root@dev:~# echo $M@
+@
+root@dev:~# echo $M2
+
+root@dev:~# source /etc/environment
+root@dev:~# 
+root@dev:~# echo $MAVEN_HOME
+/usr/share/maven/
+root@dev:~# 
+root@dev:~# echo $M2
+/usr/share/maven//bin
+
+
+# apt install git -y
+
+root@dev:~# git --version
+git version 2.17.1
+root@dev:~# 
+root@dev:~# git clone https://github.com/keshavkummari/devops_java_er_code.git
+Cloning into 'devops_java_er_code'...
+remote: Enumerating objects: 72, done.
+remote: Counting objects: 100% (72/72), done.
+remote: Compressing objects: 100% (42/42), done.
+remote: Total 72 (delta 4), reused 69 (delta 4), pack-reused 0
+Unpacking objects: 100% (72/72), done.
+root@dev:~# ls -lrt devops_java_er_code/
+total 440
+-rw-r--r-- 1 root root 132347 Aug 11 02:07 hs_err_pid14024.log
+-rw-r--r-- 1 root root     29 Aug 11 02:07 UsingWebHooks.txt
+-rw-r--r-- 1 root root     15 Aug 11 02:07 Test-Flow
+-rw-r--r-- 1 root root    299 Aug 11 02:07 README.md
+-rw-r--r-- 1 root root   1379 Aug 11 02:07 JenkinsFile
+drwxr-xr-x 6 root root   4096 Aug 11 02:07 target
+drwxr-xr-x 4 root root   4096 Aug 11 02:07 src
+-rw-r--r-- 1 root root    391 Aug 11 02:07 release.properties
+-rw-r--r-- 1 root root   3876 Aug 11 02:07 pom.xml
+-rw-r--r-- 1 root root    436 Aug 11 02:07 pemkey
+-rw-r--r-- 1 root root   4994 Aug 11 02:07 mvnw.cmd
+-rwxr-xr-x 1 root root   6468 Aug 11 02:07 mvnw
+-rw-r--r-- 1 root root 130543 Aug 11 02:07 hs_err_pid14122.log
+-rw-r--r-- 1 root root 129482 Aug 11 02:07 hs_err_pid14073.log
+root@dev:~# cd devops_java_er_code/
+root@dev:~/devops_java_er_code# 
+
+
+
+
+
+
+root@dev:~/devops_java_er_code# pwd
+/root/devops_java_er_code
+root@dev:~/devops_java_er_code# ls -lrta
+total 452
+drwx------ 6 root root   4096 Aug 11 02:07 ..
+-rw-r--r-- 1 root root 132347 Aug 11 02:07 hs_err_pid14024.log
+-rw-r--r-- 1 root root     29 Aug 11 02:07 UsingWebHooks.txt
+-rw-r--r-- 1 root root     15 Aug 11 02:07 Test-Flow
+-rw-r--r-- 1 root root    299 Aug 11 02:07 README.md
+-rw-r--r-- 1 root root   1379 Aug 11 02:07 JenkinsFile
+drwxr-xr-x 6 root root   4096 Aug 11 02:07 target
+drwxr-xr-x 4 root root   4096 Aug 11 02:07 src
+-rw-r--r-- 1 root root    391 Aug 11 02:07 release.properties
+-rw-r--r-- 1 root root   3876 Aug 11 02:07 pom.xml
+-rw-r--r-- 1 root root    436 Aug 11 02:07 pemkey
+-rw-r--r-- 1 root root   4994 Aug 11 02:07 mvnw.cmd
+-rwxr-xr-x 1 root root   6468 Aug 11 02:07 mvnw
+-rw-r--r-- 1 root root 130543 Aug 11 02:07 hs_err_pid14122.log
+-rw-r--r-- 1 root root 129482 Aug 11 02:07 hs_err_pid14073.log
+drwxr-xr-x 8 root root   4096 Aug 11 02:07 .git
+drwxr-xr-x 5 root root   4096 Aug 11 02:07 .
+root@dev:~/devops_java_er_code# git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+root@dev:~/devops_java_er_code# 
+root@dev:~/devops_java_er_code# pwd
+/root/devops_java_er_code
+root@dev:~/devops_java_er_code# ls -lrta
+total 452
+drwx------ 6 root root   4096 Aug 11 02:07 ..
+-rw-r--r-- 1 root root 132347 Aug 11 02:07 hs_err_pid14024.log
+-rw-r--r-- 1 root root     29 Aug 11 02:07 UsingWebHooks.txt
+-rw-r--r-- 1 root root     15 Aug 11 02:07 Test-Flow
+-rw-r--r-- 1 root root    299 Aug 11 02:07 README.md
+-rw-r--r-- 1 root root   1379 Aug 11 02:07 JenkinsFile
+drwxr-xr-x 6 root root   4096 Aug 11 02:07 target
+drwxr-xr-x 4 root root   4096 Aug 11 02:07 src
+-rw-r--r-- 1 root root    391 Aug 11 02:07 release.properties
+-rw-r--r-- 1 root root   3876 Aug 11 02:07 pom.xml
+-rw-r--r-- 1 root root    436 Aug 11 02:07 pemkey
+-rw-r--r-- 1 root root   4994 Aug 11 02:07 mvnw.cmd
+-rwxr-xr-x 1 root root   6468 Aug 11 02:07 mvnw
+-rw-r--r-- 1 root root 130543 Aug 11 02:07 hs_err_pid14122.log
+-rw-r--r-- 1 root root 129482 Aug 11 02:07 hs_err_pid14073.log
+drwxr-xr-x 5 root root   4096 Aug 11 02:07 .
+drwxr-xr-x 8 root root   4096 Aug 11 02:07 .git
+root@dev:~/devops_java_er_code# 
+root@dev:~/devops_java_er_code# mvn clean
+[INFO] Scanning for projects...
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/1.5.6.RELEASE/spring-boot-starter-parent-1.5.6.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-parent/1.5.6.RELEASE/spring-boot-starter-parent-1.5.6.RELEASE.pom (7.5 kB at 9.2 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-dependencies/1.5.6.RELEASE/spring-boot-dependencies-1.5.6.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-dependencies/1.5.6.RELEASE/spring-boot-dependencies-1.5.6.RELEASE.pom (93 kB at 1.4 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.8.9/jackson-bom-2.8.9.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-bom/2.8.9/jackson-bom-2.8.9.pom (10 kB at 1.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.8/jackson-parent-2.8.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/jackson/jackson-parent/2.8/jackson-parent-2.8.pom (8.0 kB at 664 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/27/oss-parent-27.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/oss-parent/27/oss-parent-27.pom (20 kB at 1.0 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.7/log4j-bom-2.7.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.7/log4j-bom-2.7.pom (5.4 kB at 669 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/9/apache-9.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/9/apache-9.pom (15 kB at 798 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/4.3.10.RELEASE/spring-framework-bom-4.3.10.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/4.3.10.RELEASE/spring-framework-bom-4.3.10.RELEASE.pom (5.1 kB at 427 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-releasetrain/Ingalls-SR6/spring-data-releasetrain-Ingalls-SR6.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/data/spring-data-releasetrain/Ingalls-SR6/spring-data-releasetrain-Ingalls-SR6.pom (4.6 kB at 417 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/data/build/spring-data-build/1.9.6.RELEASE/spring-data-build-1.9.6.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/data/build/spring-data-build/1.9.6.RELEASE/spring-data-build-1.9.6.RELEASE.pom (6.4 kB at 537 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/integration/spring-integration-bom/4.3.11.RELEASE/spring-integration-bom-4.3.11.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/integration/spring-integration-bom/4.3.11.RELEASE/spring-integration-bom-4.3.11.RELEASE.pom (8.5 kB at 708 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-bom/4.2.3.RELEASE/spring-security-bom-4.2.3.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-bom/4.2.3.RELEASE/spring-security-bom-4.2.3.RELEASE.pom (4.3 kB at 483 kB/s)
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example:devops:war:1.1.0-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.boot:spring-boot-starter-tomcat:jar -> duplicate declaration of version (?) @ line 76, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] -------------------------< com.example:devops >-------------------------
+[INFO] Building devops 1.1.0-SNAPSHOT
+[INFO] --------------------------------[ war ]---------------------------------
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-maven-plugin/1.5.6.RELEASE/spring-boot-maven-plugin-1.5.6.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-maven-plugin/1.5.6.RELEASE/spring-boot-maven-plugin-1.5.6.RELEASE.pom (6.7 kB at 612 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-tools/1.5.6.RELEASE/spring-boot-tools-1.5.6.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-tools/1.5.6.RELEASE/spring-boot-tools-1.5.6.RELEASE.pom (1.3 kB at 146 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-parent/1.5.6.RELEASE/spring-boot-parent-1.5.6.RELEASE.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-parent/1.5.6.RELEASE/spring-boot-parent-1.5.6.RELEASE.pom (27 kB at 1.8 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-maven-plugin/1.5.6.RELEASE/spring-boot-maven-plugin-1.5.6.RELEASE.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-maven-plugin/1.5.6.RELEASE/spring-boot-maven-plugin-1.5.6.RELEASE.jar (66 kB at 1.8 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.7.9/jacoco-maven-plugin-0.7.9.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.7.9/jacoco-maven-plugin-0.7.9.pom (4.5 kB at 343 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.build/0.7.9/org.jacoco.build-0.7.9.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jacoco/org.jacoco.build/0.7.9/org.jacoco.build-0.7.9.pom (35 kB at 1.2 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.7.9/jacoco-maven-plugin-0.7.9.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/jacoco/jacoco-maven-plugin/0.7.9/jacoco-maven-plugin-0.7.9.jar (47 kB at 1.5 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.6.1/maven-clean-plugin-2.6.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.6.1/maven-clean-plugin-2.6.1.pom (5.0 kB at 276 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/26/maven-plugins-26.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugins/26/maven-plugins-26.pom (11 kB at 1.4 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/25/maven-parent-25.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/25/maven-parent-25.pom (37 kB at 851 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/15/apache-15.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/15/apache-15.pom (15 kB at 1.4 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.6.1/maven-clean-plugin-2.6.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-clean-plugin/2.6.1/maven-clean-plugin-2.6.1.jar (29 kB at 1.4 MB/s)
+[INFO] 
+[INFO] --- maven-clean-plugin:2.6.1:clean (default-clean) @ devops ---
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.pom (1.5 kB at 122 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven/2.2.1/maven-2.2.1.pom (22 kB at 1.6 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/11/maven-parent-11.pom (32 kB at 1.3 MB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/5/apache-5.pom (4.1 kB at 315 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.7/maven-shared-utils-0.7.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.7/maven-shared-utils-0.7.pom (5.0 kB at 334 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/20/maven-shared-components-20.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-components/20/maven-shared-components-20.pom (5.1 kB at 638 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/24/maven-parent-24.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-parent/24/maven-parent-24.pom (37 kB at 473 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/apache/14/apache-14.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/apache/14/apache-14.pom (15 kB at 918 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.pom
+Downloaded from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.pom (965 B at 193 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.7/maven-shared-utils-0.7.jar
+Downloading from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.jar
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/maven-plugin-api/2.2.1/maven-plugin-api-2.2.1.jar (12 kB at 387 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/2.0.1/jsr305-2.0.1.jar (32 kB at 579 kB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.jar (169 kB at 2.3 MB/s)
+Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/shared/maven-shared-utils/0.7/maven-shared-utils-0.7.jar (170 kB at 2.1 MB/s)
+[INFO] Deleting /root/devops_java_er_code/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.305 s
+[INFO] Finished at: 2019-08-11T02:09:33Z
+[INFO] ------------------------------------------------------------------------
+root@dev:~/devops_java_er_code# pwd
+
+
+    3  cat /etc/hosts
+    4  ifconfig
+    5  # 172.31.87.123 dev.kk.com 
+    6  vim /etc/hosts
+    7  cat /etc/hosts
+    8  clear 
+    9  java -version
+   10  apt install default-jdk
+   11  java -version
+   12  apt update 
+   13  apt list --upgradable
+   14  clear
+   15  pwd
+   16  apt install java-1.8
+   17  apt install java-1.8*
+   18  add-apt-repository ppa:webupd8team/java
+   19  apt update 
+   20  apt list --upgradable
+   21  pwd
+   22  apt install java-8-*
+   23  apt install openjdk-8-jdk
+   24  java -version
+   25  ls -lrt /usr/lib/jvm/java-8-openjdk-amd64/
+   26  ls -lrt /etc/environment 
+   27  cat /etc/environment 
+   28  cp -pv /etc/environment /etc/environment_20190810_V1.0
+   29  vim /etc/environment
+   30  cat /etc/environment
+   31  source /etc/environment
+   32  echo $JAVA_HOME
+   33  echo $JRE_HOME
+   34  history
+   35  cd
+   36  hostnamectl set-hostname "dev.kk.com"
+   37  /bin/bash
+   38  cd
+   39  # apt install git -y
+   40  pwd
+   41  ls -lrta
+   42  cd devops_java_er_code/
+   43  ls -lrta
+   44  git branch
+   45  git branch keshavkummari
+   46  git branch
+   47  git checkout keshavkummari
+   48  ls -lrta
+   49  vim pom.xml 
+   50  cp -pv pom.xml pom.xml_20190811_V1.0
+   51  pwd
+   52  ls -lrta
+   53  git branch
+   54  vim pom.xml
+   55  git status
+   56  git add .
+   57  git status
+   58  git commit -m "New_Branch_KK"
+   59  git push -u origin master
+   60  git push -u origin keshavkummari
+   61  pwd
+   62  ls -lrta
+   63  git branch
+   64  git fetch
+   65  git pull
+   66  mvn clean
+   67  mvn clean package
+   68  pwd
+   69  ls -lrta /root/.m2/repository/com/
+   70  pwd
+   71  cd /root/.m2
+   72  ls -lrta
+   73  cd repository/
+   74  ls -lrt
+   75  ls -lrt com
+   76  ls -lrt /root/devops_java_er_code/target/devops-0.0.1-SNAPSHOT.war
+   77  cd /root/devops_java_er_code/target/
+
+
+
+   Download, Install & Configure Tomcat on Ubuntu
+
+   http://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.43/bin/apache-tomcat-8.5.43.tar.gz
+
+   174.129.129.242:8080
+
+Menus :
+Server Status
+Manager App
+Host Manager
+
+conf/tomcat-users.xml
+
+User Name : admin 
+
+Role Names : admin-gui,admin-manager,admin-script or manager-gui,manager-admin,manager-script 
+
+manager-gui - allows access to the HTML GUI and the status pages
+manager-script - allows access to the text interface and the status pages
+manager-jmx - allows access to the JMX proxy and the status pages
+manager-status - allows access to the status pages only
+
+Password  : redhat@123
+
+
+
+
+
