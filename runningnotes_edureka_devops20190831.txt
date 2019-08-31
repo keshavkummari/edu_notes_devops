@@ -1,0 +1,118 @@
+
+Dockerfile :
+
+A Dockerfile is a text document that contains all the commands  a user could call 
+
+on the commandline to assemble an image.
+
+docker build 
+
+
+Keywords :
+
+1. FROM : Used to define the base image, on which we will be building
+
+FROM Ubuntu 
+
+2. ADD : The ADD keyword is used to add files to the container being built.
+
+ADD <source> <destination_in_a_container>
+
+3. RUN : Used to add layers to the base image, by installing components. 
+         Each RUN statement adds a new layer to the docker image
+
+4. CMD : Used to run commands on the start of the container. 
+         These commands run only when there is no argument specified while running the container. 
+
+5. ENTRYPOINT : Used to Strictly to run commands the moment the container initializes. 
+
+    NOTE: ENTRYPOINT will run irrespective of the fact whether the argument is specified or not. 
+
+6. ENV : Used to define environment variables in the container runtime.
+
+
+FROM ubuntu 
+RUN apt-get update
+RUN apt-get -y install apache2 
+ADD . /var/www/html/
+ENTRYPOINT apachectl -D FOREGROUND 
+ENV name DevOps edureka 
+
+STEP-1 : Go to your local machine :
+
+mkdir docker_examples 
+
+STEP-2 : Create a file i.e. Dockerfile 
+
+FROM ubuntu 
+RUN apt-get update
+RUN apt-get -y install apache2 
+ADD . /var/www/html/
+ENTRYPOINT apachectl -D FOREGROUND 
+ENV name DevOps edureka 
+
+and create a index.html file :
+
+<html>
+<head>
+<title>DevOps World</title>
+</head>
+
+<body bgcolor="olive">
+
+<h1>Welcome to Docker World!</h1>
+
+</body>
+</html>
+
+STEP-3 : Build the Image from a Dockerfile
+
+STEP-4 : Run a Container from a Image 
+
+STEP-5 : Validate the above steps 
+
+
+
+
+
+Docker-compose :
+
+
+What is Docker-Compose?
+
+1. Webserver 
+2. Application Server
+3. Database Server
+4. FTP Server 
+5. SMTP Server
+
+
+
+version: '3.3'
+
+services:
+  db : 
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpresspass
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+volumes:
+  db_data: {}
