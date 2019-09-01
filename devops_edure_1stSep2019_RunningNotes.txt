@@ -1,0 +1,230 @@
+
+ubuntu@ip-172-31-30-29:~$ sudo hostnamectl set-hostname "dev.ckk.cloud"
+ubuntu@ip-172-31-30-29:~$ 
+ubuntu@ip-172-31-30-29:~$ /bin/bash
+ubuntu@dev:~$ 
+ubuntu@dev:~$ hostname
+dev.ckk.cloud
+ubuntu@dev:~$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.30.29  netmask 255.255.240.0  broadcast 172.31.31.255
+        inet6 fe80::d0:4bff:fe90:7e50  prefixlen 64  scopeid 0x20<link>
+        ether 02:d0:4b:90:7e:50  txqueuelen 1000  (Ethernet)
+        RX packets 912  bytes 583066 (583.0 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 667  bytes 75171 (75.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 172  bytes 14166 (14.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 172  bytes 14166 (14.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ubuntu@dev:~$ # 172.31.30.29 dev.ckk.cloud 
+ubuntu@dev:~$ 
+ubuntu@dev:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+ubuntu@dev:~$ sudo vi /etc/hosts
+
+
+ubuntu@dev:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+172.31.30.29 dev.ckk.cloud
+
+
+sudo apt-get install openjdk-8-jdk
+
+ubuntu@dev:~$ ls -lrt /usr/lib/jvm/java-8-openjdk-amd64/
+total 20
+lrwxrwxrwx 1 root root   20 Jul 18 18:52 src.zip -> ../openjdk-8/src.zip
+lrwxrwxrwx 1 root root   41 Jul 18 18:52 docs -> ../../../share/doc/openjdk-8-jre-headless
+lrwxrwxrwx 1 root root   22 Jul 18 18:52 THIRD_PARTY_README -> jre/THIRD_PARTY_README
+lrwxrwxrwx 1 root root   22 Jul 18 18:52 ASSEMBLY_EXCEPTION -> jre/ASSEMBLY_EXCEPTION
+drwxr-xr-x 4 root root 4096 Sep  1 02:02 man
+drwxr-xr-x 5 root root 4096 Sep  1 02:02 jre
+drwxr-xr-x 3 root root 4096 Sep  1 02:02 lib
+drwxr-xr-x 3 root root 4096 Sep  1 02:02 include
+drwxr-xr-x 2 root root 4096 Sep  1 02:02 bin
+ubuntu@dev:~$ 
+ubuntu@dev:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+ubuntu@dev:~$ 
+ubuntu@dev:~$ ls -lrt /etc/environment 
+-rw-r--r-- 1 root root 96 Jul 22 17:10 /etc/environment
+ubuntu@dev:~$ 
+ubuntu@dev:~$ sudo cp -pv /etc/environment /etc/environment_20190901
+'/etc/environment' -> '/etc/environment_20190901'
+ubuntu@dev:~$ 
+ubuntu@dev:~$ ls -lrt /etc/environment*
+-rw-r--r-- 1 root root 96 Jul 22 17:10 /etc/environment_20190901
+-rw-r--r-- 1 root root 96 Jul 22 17:10 /etc/environment
+ubuntu@dev:~$ sudo vi /etc/environment
+ubuntu@dev:~$ 
+ubuntu@dev:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+#JavaHomePath
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+ubuntu@dev:~$ source /etc/environment
+ubuntu@dev:~$ 
+ubuntu@dev:~$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/
+ubuntu@dev:~$ 
+ubuntu@dev:~$ sudo su
+root@dev:/home/ubuntu# 
+root@dev:/home/ubuntu# cd
+root@dev:~# 
+root@dev:~# source /etc/environment
+root@dev:~# 
+root@dev:~# echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/
+root@dev:~# 
+
+ubuntu@dev:~$ sudo apt-get install maven
+
+ubuntu@dev:~$ ls -lrt /usr/share/maven
+total 16
+lrwxrwxrwx 1 root root   10 Apr  9 21:35 conf -> /etc/maven
+drwxr-xr-x 2 root root 4096 Sep  1 02:09 man
+drwxr-xr-x 2 root root 4096 Sep  1 02:09 lib
+drwxr-xr-x 2 root root 4096 Sep  1 02:09 boot
+drwxr-xr-x 2 root root 4096 Sep  1 02:09 bin
+ubuntu@dev:~$ 
+ubuntu@dev:~$ ls -lrt /etc/environment
+-rw-r--r-- 1 root root 159 Sep  1 02:04 /etc/environment
+ubuntu@dev:~$ 
+ubuntu@dev:~$ mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1044-aws", arch: "amd64", family: "unix"
+ubuntu@dev:~$ 
+ubuntu@dev:~$ sudo cp -pv /etc/environment /etc/environment_20190901_V1
+'/etc/environment' -> '/etc/environment_20190901_V1'
+ubuntu@dev:~$ 
+ubuntu@dev:~$ ls -lrt /etc/environment*
+-rw-r--r-- 1 root root  96 Jul 22 17:10 /etc/environment_20190901
+-rw-r--r-- 1 root root 159 Sep  1 02:04 /etc/environment_20190901_V1
+-rw-r--r-- 1 root root 159 Sep  1 02:04 /etc/environment
+
+ubuntu@dev:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+#JavaHomePath
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+
+#MavenHomePath
+MAVEN_HOME=/usr/share/maven
+M2=$MAVEN_HOME/bin
+
+ubuntu@dev:~$ source /etc/environment
+ubuntu@dev:~$ 
+ubuntu@dev:~$ echo $MAVEN_HOME
+/usr/share/maven
+ubuntu@dev:~$ 
+ubuntu@dev:~$ echo $M2
+/usr/share/maven/bin
+ubuntu@dev:~$ 
+ubuntu@dev:~$ sudo su
+root@dev:/home/ubuntu# 
+root@dev:/home/ubuntu# cd
+root@dev:~# 
+root@dev:~# mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1044-aws", arch: "amd64", family: "unix"
+root@dev:~# 
+root@dev:~# echo $MAVEN_HOME
+/usr/share/maven
+root@dev:~# 
+root@dev:~# echo $M2
+$MAVEN_HOME/bin
+
+root@dev:~# ssh-keygen -t rsa -b 4096 -C "keshav.kummari@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): 
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/id_rsa.
+Your public key has been saved in /root/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:tieUyQoiMu5OubbGWNeQzuJYdHUUDjzgVfhJKCL/VkM keshav.kummari@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|    .oo=+.       |
+|. ....Eoo        |
+| o ..= =..       |
+|  o + o.oo       |
+|+..=.+ .S        |
+|oo=.*..+ .       |
+|oO +  . o .      |
+|=+o      o       |
+|+=.              |
++----[SHA256]-----+
+root@dev:~# 
+root@dev:~# ls -lrta .ssh/
+total 20
+-rw------- 1 root root  547 Sep  1 01:51 authorized_keys
+drwx------ 5 root root 4096 Sep  1 02:19 ..
+-rw-r--r-- 1 root root  750 Sep  1 02:44 id_rsa.pub
+-rw------- 1 root root 3243 Sep  1 02:44 id_rsa
+drwx------ 2 root root 4096 Sep  1 02:44 .
+root@dev:~# 
+root@dev:~# cat .ssh/id_rsa.pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC9JBlFdX5ZKpd6ur5TkOTnJ9Ctytt9RGqUIAwGODAEgfyjXHcAdFe7LvN5ohuspXQLkrCuvbASuE6clGEbHqGfj86Amiomrp+r/VCnir2iyFrVV54uj0dt8N7dY+6OeOylLusfFmmfTFSAn8R9Ger4JJsAo0Wf68ntlyqiEfJNtuSU6hhrYevFxVfxI/rrBmPk4EJhfK4dfmG0/FEhC2FeF3vMKnoy5jIjv6Yk/ac/M9a0ztF8I3A2sS/Sp11u89X60BMRmUlL3ZUsdoLvI/U8Y4aYru86estIeA7i7Cvn9PKptVjvWWGdNRbloFHKk4EVHQeM85sSscKfn8LM5WstZVn2iMEfpCgAVK5itQYYtUV7v7xBKby+LHLlwFDGCEYqM7LF2MLJ1T/SUxHpAxbitp30AtcDCMSJVuzo8dhz3ZhEQogo5motE/KMsdQZXuEP0F2uV87h3Ti2YtQdwhpK8UrLI7JdZbKe/SY/7uCfzMx4EWVFgOTOGpuuqPXG3m1/VUnZfnndbJxG9O4UMbpepfrMTsQAfhZpS7mNrzmW3k2c3knpJEnMCfLpU4DirSV7B+11X4BizKK5QyiLcYLywNaVvDbBdAxRSPx/0zlKSPgZ3Mfw3M7X01td8uCbnjRaV8IV/4Uyt62pnZn17THWJuPyitzTZVhgwRSScFRVjQ== keshav.kummari@gmail.com
+root@dev:~# 
+root@dev:~# 
+root@dev:~# 
+root@dev:~# eval "$(ssh-agent -s)"
+Agent pid 9533
+root@dev:~# 
+root@dev:~# ssh-add -k ~/.ssh/id_rsa 
+Identity added: /root/.ssh/id_rsa (/root/.ssh/id_rsa)
+root@dev:~# 
+root@dev:~# ssh -T git@github.com
+The authenticity of host 'github.com (13.234.210.38)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,13.234.210.38' (RSA) to the list of known hosts.
+Hi keshavkummari! You've successfully authenticated, but GitHub does not provide shell access.
+root@dev:~# 
+root@dev:~# 
+root@dev:~# git config --global user.email "keshav.kummari@gmail.com"
+root@dev:~# 
+root@dev:~# git config --global user.name "keshavkummari"
+root@dev:~# 
+
+
+docker pull alexrudoy/jfrog-artifactory-oss
+
+   38  mvn clean package 
+   39  mvn clean package deploy
+
+   
