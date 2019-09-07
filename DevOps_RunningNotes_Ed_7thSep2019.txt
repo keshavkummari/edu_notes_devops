@@ -1,0 +1,260 @@
+
+Agenda : 
+
+1. Ansible 
+
+2. Nagios
+
+3. CI/CD Pipeline 
+
+
+Hands :
+
+Ansible :
+
+1. What is Ansible?
+2. Why Ansible?
+3. How does Ansible Works?
+4. Setting up Master and Host
+5. Executing Ansible Commands
+6. Writing Ansible Playbooks
+
+AWS ===>> EC2 ---> 2 (Ubuntu 18.04)
+
+Ansible Master : 
+    Name : ansible.edureka.com
+
+Ansible Host:
+    Name : host1.edureka.com 
+
+
+What is Ansible Roles?
+
+Why do we need Ansible Roles?
+
+Roles simplifies writing complex Playbooks
+Roles allows you to reuse common configuration steps betwen different types of servers
+Roles are flexible and can be easily modified.
+
+
+
+
+ubuntu@ip-172-31-3-150:~$ pwd
+/home/ubuntu
+ubuntu@ip-172-31-3-150:~$ hostname
+ip-172-31-3-150
+ubuntu@ip-172-31-3-150:~$ 
+ubuntu@ip-172-31-3-150:~$ sudo hostnamectl set-hostname "ansible.edureka.com"
+ubuntu@ip-172-31-3-150:~$ 
+ubuntu@ip-172-31-3-150:~$ /bin/bash
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ hostname
+ansible.edureka.com
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ ls -lrt /etc/hosts
+-rw-r--r-- 1 root root 221 Jul 22 15:59 /etc/hosts
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.3.150  netmask 255.255.240.0  broadcast 172.31.15.255
+        inet6 fe80::8f1:aaff:fec4:6720  prefixlen 64  scopeid 0x20<link>
+        ether 0a:f1:aa:c4:67:20  txqueuelen 1000  (Ethernet)
+        RX packets 1153  bytes 608460 (608.4 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 837  bytes 96541 (96.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 172  bytes 14166 (14.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 172  bytes 14166 (14.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ubuntu@ansible:~$ # 172.31.3.150 ansible.edureka.com 
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ sudo vi /etc/hosts
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+# Ansible Master Server Details
+172.31.3.150 ansible.edureka.com
+
+
+ubuntu@ansible:~$ # Ansible written in Python
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # Ansible is Push Based Configuration Management Tool
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # No Agent
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # Ansible SSH 
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # 2015 @ Redhat 
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # Written by Michael Dehaan
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # Configuration Management Tools :
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # Pull Based CM Tools : 1. Chef and 2. Puppet
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # Push Based CM Tools : 1. Ansible and 2. SaltStack
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # Chef and Puppet : Ruby DSL Language
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ # Ansible and SaltStack Python 
+
+ubuntu@ansible:~$ sudo apt-add-repository ppa:ansible/ansible 
+ Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy. Avoid writing scripts or custom code to deploy and update your applications— automate in a language that approaches plain English, using SSH, with no agents to install on remote systems.
+
+http://ansible.com/
+ More info: https://launchpad.net/~ansible/+archive/ubuntu/ansible
+Press [ENTER] to continue or Ctrl-c to cancel adding it.
+
+Hit:1 http://security.ubuntu.com/ubuntu bionic-security InRelease
+Hit:2 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic InRelease
+Get:3 http://ppa.launchpad.net/ansible/ansible/ubuntu bionic InRelease [15.9 kB]
+Hit:4 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-updates InRelease       
+Hit:5 http://ap-south-1.ec2.archive.ubuntu.com/ubuntu bionic-backports InRelease    
+Get:6 http://ppa.launchpad.net/ansible/ansible/ubuntu bionic/main amd64 Packages [528 B]
+Get:7 http://ppa.launchpad.net/ansible/ansible/ubuntu bionic/main Translation-en [344 B]
+Fetched 16.8 kB in 1s (15.3 kB/s)                   
+Reading package lists... Done
+ubuntu@ansible:~$
+
+
+root@ansible:~# history
+    1  cd
+    2  pwd
+    3  ls -lrta
+    4  ls -lrta .ssh/
+    5  vi /etc/hosts
+    6  cat /etc/hosts
+    7  pwd
+    8  hostname
+    9  ls -lrta .ssh/
+   10  cat .ssh/authorized_keys 
+   11  ssh-keygen 
+   12  ls -lrta .ssh/
+   13  cat id_rsa.pub
+   14  cat .ssh/id_rsa.pub
+   15  hostname
+   16  hosntame
+   17  hostname
+   18  cat /etc/hosts
+   19  ls -lrt .ssh/
+   20  history
+   21  hostname
+   22  pwd
+   23  ls -lrta
+   24  ls -lrt .ssh/
+   25  # ssh-keygen 
+   26  # 4 
+   27  cat .ssh/id_rsa.pub 
+   28  hostname
+   29  ls -lrta
+   30  ls -lrta .ssh/
+   31  cat .ssh/id_rsa.pub 
+   32  cat /etc/hosts
+   33  ping 172.31.0.86
+   34  ping host1.edureka.com
+   35  hostname
+   36  ansible --version
+   37  ls -lrt .ssh/
+   38  ls -lrt /etc/ansible/
+   39  cd /etc/ansible/
+   40  ls -lrt
+   41  cat hosts 
+   42  pwd
+   43  ls -lrt
+   44  cp -pv hosts hosts_20190907
+   45  vi hosts
+   46  grep -h -n web-host1 hosts
+   47  pwd
+   48  ls -lrt
+   49  mkdir host_vars
+   50  ls -lrt
+   51  cd host_vars/
+   52  pwd
+   53  ls -lrt
+   54  touch web-host1
+   55  ls -lrt
+   56  pwd
+   57  vi web-host1 
+   58  pwd
+   59  hostname
+   60  cat web-host1 
+   61  ls -lrt /root/.ssh/id_rsa*
+   62  ls -lrt /etc/ansible/hosts
+   63  cd
+   64  cat /etc/hosts
+   65  ping 172.31.0.86 
+   66  ping host1.edureka.com
+   67  ansible -m ping all
+   68  cat /etc/ansible/host_vars/web-host1 
+   69  cat /etc/ansible/hosts | grep web-host1
+   70  ansible -m shell -a 'free -m' web-host1
+   71  ansible -m shell -a 'df -TH' web-host1
+   72  ansible -m shell -a 'hostname' web-host1
+   73  ansible -m shell -a 'cat /etc/hosts' web-host1
+
+
+   Ansible Host:
+
+   root@host1:~# history
+    1  pwd
+    2  cd
+    3  hostname
+    4  ls -lrta .ssh/
+    5  cat .ssh/authorized_keys 
+    6  vi .ssh/authorized_keys 
+    7  cat .ssh/authorized_keys 
+    8  hostname
+    9  ls -lrta
+   10  ls -lrta .ssh/
+   11  cat .ssh/authorized_keys 
+   12  vi .ssh/authorized_keys 
+   13  cd
+   14  pwd
+   15  ls -lrta
+   16  hostname
+   17  pwd
+   18  ls -lrta .ssh/
+   19  ls -lrt
+   20  cat .ssh/authorized_keys 
+   21  cat /etc/hosts
+   22  ping 172.31.0.86
+   23  hostname
+   24  ping 172.31.3.150
+   25  ping ansible.edureka.com
+   26  hostname
+   27  cat /etc/hosts
+   28  ifconfig 
+   29  hostname
+   30  pwd
+   31  ls -lrt .ssh/authorized_keys 
+   32  cat .ssh/authorized_keys 
+   
+
+   

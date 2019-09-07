@@ -1,0 +1,14 @@
+---
+  
+- hosts: web-host1 
+  sudo: yes
+  name: play-1
+  task:
+   - name: Execute Command 'Date'
+     command: date 
+   - name: Execute Shell Script on Host1 Server 
+     script: test_script.sh 
+   - name: Update the Repo
+     command: apt update 
+   - name: Install elinks Package on Host1 Server 
+     apt: pkg=elinks state=latest
