@@ -1,0 +1,214 @@
+Agenda : 
+
+1. Ansible Roles
+2. CI/CD Pipeline :
+    1. Jenkins
+    2. Jfrog
+    3. SonarQube
+    4. Tomcat
+    5. Nagios 
+
+#---------------------------------------------------------------------------#
+
+What is Ansible Role?
+
+Why do we need Ansible Roles?
+
+- Roles simplifies writing complex playbooks
+- Roles allows you to reuse common configuration steps between different types of servers 
+- Roles are flexible and can be easily modified
+
+Structure of Ansible Role:
+
+Creating an Ansible Role:
+
+root@ansible:~# hostname
+ansible.edureka.com
+root@ansible:~# 
+root@ansible:~# cd /etc/ansible/
+root@ansible:/etc/ansible# pwd
+/etc/ansible
+root@ansible:/etc/ansible# ls -lrt
+total 40
+-rw-r--r-- 1 root root  1016 Aug 16 00:01 hosts_20190907
+-rw-r--r-- 1 root root 19980 Aug 16 00:01 ansible.cfg
+drwxr-xr-x 2 root root  4096 Aug 16 00:03 roles
+-rw-r--r-- 1 root root  1024 Sep  7 02:01 hosts
+drwxr-xr-x 2 root root  4096 Sep  7 02:03 host_vars
+drwxr-xr-x 2 root root  4096 Sep  7 03:18 playbooks
+root@ansible:/etc/ansible# tree
+.
+├── ansible.cfg
+├── host_vars
+│   └── web-host1
+├── hosts
+├── hosts_20190907
+├── playbooks
+│   ├── a.yaml
+│   ├── a1.yaml
+│   ├── apache.yaml
+│   ├── install_update_execute.yaml
+│   └── test_script.sh
+└── roles
+
+3 directories, 9 files
+root@ansible:/etc/ansible# cd roles
+root@ansible:/etc/ansible/roles# tree
+.
+
+0 directories, 0 files
+
+root@ansible:/etc/ansible/roles# ansible-galaxy init apache --offline
+- apache was created successfully
+root@ansible:/etc/ansible/roles# tree
+.
+└── apache
+    ├── README.md
+    ├── defaults
+    │   └── main.yml
+    ├── files
+    ├── handlers
+    │   └── main.yml
+    ├── meta
+    │   └── main.yml
+    ├── tasks
+    │   └── main.yml
+    ├── templates
+    ├── tests
+    │   ├── inventory
+    │   └── test.yml
+    └── vars
+        └── main.yml
+
+9 directories, 8 files
+
+root@ansible:/etc/ansible# ansible-playbook site.yml --syntax-check
+
+playbook: site.yml
+root@ansible:/etc/ansible# 
+root@ansible:/etc/ansible# ansible-playbook site.yml 
+
+PLAY [web-host1] ****************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************
+ok: [web-host1]
+
+TASK [apache : install apache2] *************************************************************************************************************
+ [WARNING]: Could not find aptitude. Using apt-get instead
+
+ok: [web-host1]
+
+TASK [apache : apache2.conf file] ***********************************************************************************************************
+changed: [web-host1]
+
+TASK [apache : send copy.html file] *********************************************************************************************************
+changed: [web-host1]
+
+TASK [apache : starting apache2 service] ****************************************************************************************************
+ok: [web-host1]
+
+RUNNING HANDLER [apache : restart apache2 service] ******************************************************************************************
+fatal: [web-host1]: FAILED! => {"changed": false, "msg": "Unable to restart service apache2: Job for apache2.service failed because the control process exited with error code.\nSee \"systemctl status apache2.service\" and \"journalctl -xe\" for details.\n"}
+
+NO MORE HOSTS LEFT **************************************************************************************************************************
+
+PLAY RECAP **********************************************************************************************************************************
+web-host1                  : ok=5    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+
+root@ansible:/etc/ansible# cat site.yml 
+---
+  - hosts: web-host1
+    roles:
+      - apache
+root@ansible:/etc/ansible# ls -lrt
+total 44
+-rw-r--r-- 1 root root  1016 Aug 16 00:01 hosts_20190907
+-rw-r--r-- 1 root root 19980 Aug 16 00:01 ansible.cfg
+-rw-r--r-- 1 root root  1024 Sep  7 02:01 hosts
+drwxr-xr-x 2 root root  4096 Sep  7 02:03 host_vars
+drwxr-xr-x 2 root root  4096 Sep  7 03:18 playbooks
+drwxr-xr-x 3 root root  4096 Sep  8 00:52 roles
+-rw-r--r-- 1 root root    51 Sep  8 01:24 site.yml
+root@ansible:/etc/ansible# cd roles/
+root@ansible:/etc/ansible/roles# ls -lrt
+total 4
+drwxr-xr-x 10 root root 4096 Sep  8 00:52 apache
+root@ansible:/etc/ansible/roles# tree apache/
+apache/
+├── README.md
+├── defaults
+│   └── main.yml
+├── files
+│   ├── apache2.conf
+│   └── copy.html
+├── handlers
+│   └── main.yml
+├── meta
+│   └── main.yml
+├── tasks
+│   ├── configure.yml
+│   ├── install.yml
+│   ├── main.yml
+│   └── service.yml
+├── templates
+├── tests
+│   ├── inventory
+│   └── test.yml
+└── vars
+    └── main.yml
+
+8 directories, 13 files
+root@ansible:/etc/ansible/roles# 
+
+
+
+   18  grep jenkins /etc/passwd /etc/shadow /etc/group /etc/gshadow
+   19  ls -lrt /var/lib/jenkins
+   20  ls -lrt /etc/sudoers
+   21  grep jenkins /etc/sudoers
+   22  vim /etc/sudoers
+   23  ls -lrt /var/lib/jenkins/.ssh/
+   24  ls -lrt /var/lib/jenkins/.ssh/id_rsa
+   25  ls -lrt /var/lib/jenkins/.ssh/id_rsa.pub 
+   26  ls -lrt /var/lib/jenkins/devops/
+
+
+Jenkins :
+    1. Java
+    2. Maven 
+    3. Github Integration (SSH-Keys and integrated with github)
+    4. CodeRepo : devops 
+    5. .m2 /
+            1. Maven with Jfrog 
+            2. Maven with SonarQube
+
+Launch Jfrog Instance :
+
+
+[DeployPublisher][INFO] Deploying /var/lib/jenkins/workspace/deploy_job/target/devops-1.1.0-SNAPSHOT.war to container Tomcat 7.x Remote with context devops
+ERROR: Build step failed with exception
+org.codehaus.cargo.container.ContainerException: The [cargo.remote.username] and [cargo.remote.password] properties are mandatory and need to be defined in your configuration.
+	at org.codehaus.cargo.container.tomcat.internal.AbstractTomcatManagerDeployer.createManager(AbstractTomcatManagerDeployer.java:311)
+	at org.codehaus.cargo.container.tomcat.internal.AbstractTomcatManagerDeployer.getTomcatManager(AbstractTomcatManagerDeployer.java:82)
+	at org.codehaus.cargo.container.tomcat.internal.AbstractTomcatManagerDeployer.redeploy(AbstractTomcatManagerDeployer.java:169)
+	at hudson.plugins.deploy.CargoContainerAdapter.deploy(CargoContainerAdapter.java:81)
+	at hudson.plugins.deploy.CargoContainerAdapter$DeployCallable.invoke(CargoContainerAdapter.java:167)
+	at hudson.plugins.deploy.CargoContainerAdapter$DeployCallable.invoke(CargoContainerAdapter.java:136)
+	at hudson.FilePath.act(FilePath.java:1076)
+	at hudson.FilePath.act(FilePath.java:1059)
+	at hudson.plugins.deploy.CargoContainerAdapter.redeployFile(CargoContainerAdapter.java:133)
+	at hudson.plugins.deploy.PasswordProtectedAdapterCargo.redeployFile(PasswordProtectedAdapterCargo.java:95)
+	at hudson.plugins.deploy.DeployPublisher.perform(DeployPublisher.java:113)
+	at hudson.tasks.BuildStepCompatibilityLayer.perform(BuildStepCompatibilityLayer.java:79)
+	at hudson.tasks.BuildStepMonitor$3.perform(BuildStepMonitor.java:45)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.perform(AbstractBuild.java:741)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.performAllBuildSteps(AbstractBuild.java:690)
+	at hudson.maven.MavenModuleSetBuild$MavenModuleSetBuildExecution.post2(MavenModuleSetBuild.java:1074)
+	at hudson.model.AbstractBuild$AbstractBuildExecution.post(AbstractBuild.java:635)
+	at hudson.model.Run.execute(Run.java:1843)
+	at hudson.maven.MavenModuleSetBuild.run(MavenModuleSetBuild.java:543)
+	at hudson.model.ResourceController.execute(ResourceController.java:97)
+	at hudson.model.Executor.run(Executor.java:429)
+Build step 'Deploy war/ear to a container' marked build as failure
+Finished: FAILURE
+
